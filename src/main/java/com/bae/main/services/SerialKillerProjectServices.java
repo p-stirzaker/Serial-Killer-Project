@@ -2,6 +2,8 @@ package com.bae.main.services;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.bae.main.entities.SerialKillerProject.SerialKiller;
 
 public class SerialKillerProjectServices {
@@ -20,4 +22,29 @@ public class SerialKillerProjectServices {
 	public List<SerialKiller> getAll(){
 		return repo.findAll();
 	}
+	
+	public SerialKiller getById(long id) {
+		return repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
+	}
+	
+	public SerialKiller update(long id, SerialKiller input) {
+		SerialKiller existing = repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
+		
+	}
+	
+	public List<SerialKiller> getByFirstName(@PathVariable String firstName) {
+		return repo.findSerialKillerByFirstName(firstName);
+	}
+	
+	public List<SerialKiller> getByLastName(@PathVariable String lastName) {
+		return repo.findByLastName(lastName);
+	}
+	
+	public List<SerialKiller> getByPlace(@PathVariable String place) {
+		return repo.findByPlace(place);
+	}
+	public SerialKiller getByConfirmedKills(@PathVariable int confirmedKills) {
+		return repo.findByFirstName(confirmedKills);
+	}
+	
 }
