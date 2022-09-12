@@ -1,5 +1,7 @@
 package com.bae.main.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -79,6 +81,22 @@ public class SerialKiller{
 
 	public void setZodiacSign(String zodiacSign) {
 		this.zodiacSign = zodiacSign;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, firstName, lastName, place, confirmedKills, zodiacSign);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SerialKiller other = (SerialKiller) obj;
+		return id == other.id && Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName) && Objects.equals(place, other.place) && confirmedKills == other.confirmedKills && Objects.equals(zodiacSign, other.zodiacSign);
 	}
 }
 }
