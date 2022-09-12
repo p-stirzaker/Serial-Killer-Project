@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,5 +59,10 @@ public class SerialKillerProjectController {
 	@GetMapping("/getByZodiacSign/{lastName}")
 	public List <SerialKiller> getByZodiacSign(@PathVariable String zodiacSign) {
 		return service.getByZodiacSign(zodiacSign);
+	}
+	@DeleteMapping("/delete/{id}")
+	public boolean delete(@PathVariable long id) {
+		return service.delete(id);
+
 	}
 }
