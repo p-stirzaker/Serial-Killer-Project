@@ -33,6 +33,12 @@ public class SerialKillerProjectController {
 	public SerialKiller getById(@PathVariable long id) {
 		return this.service.getById(id);
 	}
+	
+	@GetMapping("/getAll")
+	public List<SerialKiller> getAll() {
+		return service.getAll();
+		}
+	
 	@PutMapping("/update/{id}")
 	public ResponseEntity<SerialKiller>update(@PathVariable long id, @RequestBody SerialKiller input) {
 		return new ResponseEntity<SerialKiller>(service.update(id, input),HttpStatus.ACCEPTED);	
