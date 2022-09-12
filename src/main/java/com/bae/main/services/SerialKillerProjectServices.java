@@ -37,14 +37,16 @@ public class SerialKillerProjectServices {
 	}
 	
 	public List<SerialKiller> getByLastName(@PathVariable String lastName) {
-		return repo.findByLastName(lastName);
+		return repo.findSerialKillerByLastName(lastName);
 	}
 	
 	public List<SerialKiller> getByPlace(@PathVariable String place) {
-		return repo.findByPlace(place);
+		return repo.findSerialKillerByPlace(place);
 	}
 	public SerialKiller getByConfirmedKills(@PathVariable int confirmedKills) {
-		return repo.findByFirstName(confirmedKills);
+		return repo.findSerialKillerByConfirmedKills(confirmedKills);
 	}
-	
+	public List<SerialKiller> getByZodiacSign (@PathVariable String zodiacSign) {
+		return repo.findSerialKillerByZodiacSign(zodiacSign);
+	}
 }
