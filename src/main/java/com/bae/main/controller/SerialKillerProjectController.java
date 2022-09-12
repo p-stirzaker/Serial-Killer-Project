@@ -45,5 +45,18 @@ public class SerialKillerProjectController {
 	public List <SerialKiller> getByLastName(@PathVariable String lastName) {
 		return service.getByLastName(lastName);
 	}
+	@GetMapping("/getByPlace/{place}")
+	public List <SerialKiller> getByPlace(@PathVariable String place) {
+		return service.getByPlace(place);
+	}
 
+	@GetMapping("/getByConfirmedKills/{confirmedKills}")
+	public SerialKiller getByConfirmedKills(@PathVariable int number) {
+	return service.getByconfirmedKills(number);
+	}
+
+	@GetMapping("/getByZodiacSign/{lastName}")
+	public List <SerialKiller> getByZodiacSign(@PathVariable String zodiacSign) {
+		return service.getByZodiacSign(zodiacSign);
+	}
 }
