@@ -24,13 +24,9 @@ public class SerialKillerProjectServices {
 	}
 	
 	public SerialKiller getById(long id) {
-		return repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
+		return repo.findSerialKillerById(id).orElseThrow(SerialKillerNotFoundException::new);
 	}
 	
-	public SerialKiller update(long id, SerialKiller input) {
-		SerialKiller existing = repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
-		
-	}
 	
 	public List<SerialKiller> getByFirstName(@PathVariable String firstName) {
 		return repo.findSerialKillerByFirstName(firstName);
@@ -43,10 +39,30 @@ public class SerialKillerProjectServices {
 	public List<SerialKiller> getByPlace(@PathVariable String place) {
 		return repo.findSerialKillerByPlace(place);
 	}
+	
 	public SerialKiller getByConfirmedKills(@PathVariable int confirmedKills) {
 		return repo.findSerialKillerByConfirmedKills(confirmedKills);
 	}
+	
 	public List<SerialKiller> getByZodiacSign (@PathVariable String zodiacSign) {
 		return repo.findSerialKillerByZodiacSign(zodiacSign);
+	}
+	
+	public SerialKiller update(long id, SerialKiller input) {
+		SerialKiller existing = repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
+		
+		existing.setFirstName(input.getFirstName());
+		existing.setLastName(input.getLastName());
+		existing.setPlace(input.getPlace());
+		existing.setConfirmedKills(input.getConfirmedKills());
+		existing.setZodiacSign(input.getZodiacSign());
+		
+		return repo.saveAndFlush(existing);
+	}
+	
+	public boolean delete(long id) {
+		repo.deleteSerialKillerById(id);
+		
+		return !repo.existsById(id);
 	}
 }
