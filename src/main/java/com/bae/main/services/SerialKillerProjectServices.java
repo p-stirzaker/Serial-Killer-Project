@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.bae.main.entities.SerialKillerProject.SerialKiller;
+import com.bae.main.repos.SerialKillerProjectRepo;
 
 public class SerialKillerProjectServices {
 
-	private SerialKillerProjectRepo;
+	private SerialKillerProjectRepo repo;
 	
 	public SerialKillerProjectServices(SerialKillerProjectRepo repo) {
 		super();
@@ -24,7 +25,7 @@ public class SerialKillerProjectServices {
 	}
 	
 	public SerialKiller getById(long id) {
-		return repo.findSerialKillerById(id).orElseThrow(SerialKillerNotFoundException::new);
+		return repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
 	}
 	
 	
@@ -61,7 +62,7 @@ public class SerialKillerProjectServices {
 	}
 	
 	public boolean delete(long id) {
-		repo.deleteSerialKillerById(id);
+		repo.deleteById(id);
 		
 		return !repo.existsById(id);
 	}
