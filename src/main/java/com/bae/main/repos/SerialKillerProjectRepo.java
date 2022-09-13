@@ -13,4 +13,9 @@ public interface SerialKillerProjectRepo extends JpaRepository<SerialKiller, Lon
 	List<SerialKiller> findSerialKillerByFirstName(String firstName);
 	
 	List<SerialKiller> findSerialKillerByLastName(String lastName);
+	
+	List<SerialKiller> findSerialKillerByPlace(String place);
+	
+	SerialKiller findSerialKillerByConfirmedKills(int confirmedKills);
+	
 }
