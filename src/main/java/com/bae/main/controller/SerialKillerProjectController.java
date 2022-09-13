@@ -27,7 +27,7 @@ public class SerialKillerProjectController {
 
 	@PostMapping("/create")
 	public ResponseEntity<SerialKiller> create(@RequestBody SerialKiller input) {
-		return new ResponseEntity<Serialkiller>(service.create(input), HttpStatus.CREATED);
+		return new ResponseEntity<SerialKiller>(service.create(input), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/getById/{id}")

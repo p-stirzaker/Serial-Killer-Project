@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.bae.main.entities.SerialKillerProject.SerialKiller;
+import com.bae.main.exceptions.SerialKillerNotFoundException;
 import com.bae.main.repos.SerialKillerProjectRepo;
 
 public class SerialKillerProjectServices {
