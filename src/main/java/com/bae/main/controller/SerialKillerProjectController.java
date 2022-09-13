@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bae.main.entities.SerialKillerProject.SerialKiller;
+import com.bae.main.services.SerialKillerProjectServices;
 
 @RestController
 @RequestMapping("/SerialKiller")
@@ -21,7 +22,7 @@ public class SerialKillerProjectController {
 	private SerialKillerProjectServices service;
 	public SerialKillerProjectController(SerialKillerProjectServices service) {
 		super();
-		this.serivce = service;
+		this.service = service;
 	}
 
 	@PostMapping("/create")
@@ -59,7 +60,7 @@ public class SerialKillerProjectController {
 
 	@GetMapping("/getByConfirmedKills/{confirmedKills}")
 	public SerialKiller getByConfirmedKills(@PathVariable int number) {
-	return service.getByconfirmedKills(number);
+	return service.getByConfirmedKills(number);
 	}
 
 	@GetMapping("/getByZodiacSign/{lastName}")
