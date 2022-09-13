@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `serial_killer`
+DROP TABLE IF EXISTS `serial_killer`;
 
 CREATE TABLE `serial_killer` (
 	`id` BIGINT AUTO_INCREMENT,

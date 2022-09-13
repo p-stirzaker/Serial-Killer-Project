@@ -34,6 +34,27 @@ public class SerialKiller{
 	public SerialKiller() {
 		super();
 	}
+	
+	public SerialKiller(String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.place = place;
+		this.confirmedKills = confirmedKills;
+		this.zodiacSign = zodiacSign;
+
+	}
+
+	// Used for reading
+	public SerialKiller(long id, String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.place = place;
+		this.confirmedKills = confirmedKills;
+		this.zodiacSign = zodiacSign;
+	}
 
 	public long getId() {
 		return id;
