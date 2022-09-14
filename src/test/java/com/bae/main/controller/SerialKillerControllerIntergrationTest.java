@@ -49,11 +49,11 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void getAllTest() throws Exception {	
-		//Created a list
+
 		List<SerialKiller> result = new ArrayList<>();
-		//Added my expected customer to the list
+
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getAll")
@@ -66,7 +66,7 @@ public class SerialKillerControllerIntergrationTest {
 	public void getByIdTest() throws Exception {	
 		//Created a list
 		SerialKiller result = new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius");
-				//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 				
 		mvc.perform(get("/SerialKiller/getById/1")
@@ -77,10 +77,10 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void updateTest() throws Exception {	
-		// An object for sending in the body of the request
+
 		SerialKiller input = new SerialKiller("Rose","West", "Gloucester", 10, "Sagittarius");
 		String resultAsJSON = mapper.writeValueAsString(input);
-		// An object for checking the response
+
 		SerialKiller response = new SerialKiller(1L,"Rose","West", "Gloucester", 10, "Sagittarius");
 		String responseAsJSON = mapper.writeValueAsString(response);	
 		
@@ -93,10 +93,10 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void getByFirstNameTest() throws Exception {	
-		//Added my expected customer to the list
+
 		List<SerialKiller> result = new ArrayList<>();
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getByFirstName/Dennis")
@@ -107,11 +107,11 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void getBylastNameTest() throws Exception {	
-		//Created a list
+
 		List<SerialKiller> result = new ArrayList<>();
-		//Added my expected customer to the list
+	
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getBylastName/Nilsen")
@@ -124,9 +124,9 @@ public class SerialKillerControllerIntergrationTest {
 	public void getByPlace() throws Exception {	
 		//Created a list
 		List<SerialKiller> result = new ArrayList<>();
-		//Added my expected customer to the list
+
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getBylastName/London")
@@ -137,11 +137,11 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void getByConfirmedKills() throws Exception {	
-		//Created a list
+
 		List<SerialKiller> result = new ArrayList<>();
-		//Added my expected customer to the list
+
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getBylastName/12")
@@ -152,11 +152,11 @@ public class SerialKillerControllerIntergrationTest {
 	
 	@Test
 	public void getByZodicSign() throws Exception {	
-		//Created a list
+
 		List<SerialKiller> result = new ArrayList<>();
-		//Added my expected customer to the list
+
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
-		//Converted that list into JSON
+
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
 		mvc.perform(get("/SerialKiller/getBylastName/Sagittarius")
