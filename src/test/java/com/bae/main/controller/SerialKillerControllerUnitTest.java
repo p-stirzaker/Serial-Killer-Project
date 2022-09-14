@@ -1,5 +1,6 @@
 package com.bae.main.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -154,5 +155,28 @@ public class SerialKillerControllerUnitTest {
 			.andExpect(content().json(resultAsJSON));
 	}
 	
+	@Test
+	public void getByZodicSign() throws Exception {	
+
+		List<SerialKiller> result = new ArrayList<>();
+
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/Sagittarius")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	
+	@Test
+	public void deleteTest() throws Exception {	
+		mvc.perform(delete("/SerialKiller/delete/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().string("true"));
+	}
 	
 }
