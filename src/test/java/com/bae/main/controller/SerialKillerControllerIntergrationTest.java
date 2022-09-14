@@ -129,7 +129,7 @@ public class SerialKillerControllerIntergrationTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
-		mvc.perform(get("/SerialKiller/getBylastName/London")
+		mvc.perform(get("/SerialKiller/getByPlace/London")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
 			.andExpect(content().json(resultAsJSON));
@@ -144,7 +144,7 @@ public class SerialKillerControllerIntergrationTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
-		mvc.perform(get("/SerialKiller/getBylastName/12")
+		mvc.perform(get("/SerialKiller/getByConfirmedKills/12")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
 			.andExpect(content().json(resultAsJSON));
@@ -159,7 +159,7 @@ public class SerialKillerControllerIntergrationTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
-		mvc.perform(get("/SerialKiller/getBylastName/Sagittarius")
+		mvc.perform(get("/SerialKiller/getByZodiacSign/Sagittarius")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
 			.andExpect(content().json(resultAsJSON));
