@@ -1,8 +1,13 @@
 package com.bae.main.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -45,6 +50,108 @@ public class SerialKillerControllerUnitTest {
 			.content(inputAsJSON))
 			.andExpect(status().isCreated())	
 			.andExpect(content().json(responseAsJSON));
+	}
+
+	@Test
+	public void getAllTest() throws Exception {	
+
+		List<SerialKiller> result = new ArrayList<>();
+
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getAll")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByIdTest() throws Exception {	
+		SerialKiller result = new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius");
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+				
+		mvc.perform(get("/SerialKiller/getById/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void updateTest() throws Exception {	
+
+		SerialKiller input = new SerialKiller("Rose","West", "Gloucester", 10, "Sagittarius");
+		String resultAsJSON = mapper.writeValueAsString(input);
+
+		SerialKiller response = new SerialKiller(1L,"Rose","West", "Gloucester", 10, "Sagittarius");
+		String responseAsJSON = mapper.writeValueAsString(response);	
+		
+		mvc.perform(put("/SerialKiller/update/1")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(resultAsJSON))
+			.andExpect(status().isAccepted())	
+			.andExpect(content().json(responseAsJSON));
+	}
+	
+	@Test
+	public void getByFirstNameTest() throws Exception {	
+
+		List<SerialKiller> result = new ArrayList<>();
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getByFirstName/Dennis")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getBylastNameTest() throws Exception {	
+
+		List<SerialKiller> result = new ArrayList<>();
+	
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/Nilsen")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByPlace() throws Exception {	
+		//Created a list
+		List<SerialKiller> result = new ArrayList<>();
+
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/London")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByConfirmedKills() throws Exception {	
+
+		List<SerialKiller> result = new ArrayList<>();
+
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/12")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
 	}
 	
 	
