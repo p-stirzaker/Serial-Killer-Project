@@ -58,11 +58,11 @@ import com.bae.main.services.SerialKillerServices;
 		}
 
 		@GetMapping("/getByConfirmedKills/{confirmedKills}")
-		public SerialKiller getByConfirmedKills(@PathVariable int number) {
-		return service.getByConfirmedKills(number);
+		public List <SerialKiller> getByConfirmedKills(@PathVariable int confirmedKills) {
+		return service.getByConfirmedKills(confirmedKills);
 		}
 
-		@GetMapping("/getByZodiacSign/{lastName}")
+		@GetMapping("/getByZodiacSign/{zodiacSign}")
 		public List <SerialKiller> getByZodiacSign(@PathVariable String zodiacSign) {
 			return service.getByZodiacSign(zodiacSign);
 		}

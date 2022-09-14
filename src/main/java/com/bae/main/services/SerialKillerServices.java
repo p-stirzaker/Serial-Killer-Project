@@ -45,7 +45,7 @@ public class SerialKillerServices {
 		return repo.findSerialKillerByPlace(place);
 	}
 	
-	public SerialKiller getByConfirmedKills(@PathVariable int confirmedKills) {
+	public List<SerialKiller> getByConfirmedKills(@PathVariable int confirmedKills) {
 		return repo.findSerialKillerByConfirmedKills(confirmedKills);
 	}
 	

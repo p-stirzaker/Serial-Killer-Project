@@ -17,7 +17,7 @@ public interface SerialKillerRepo extends JpaRepository<SerialKiller, Long> {
 	
 	List<SerialKiller> findSerialKillerByPlace(String place);
 	
-	SerialKiller findSerialKillerByConfirmedKills(int confirmedKills);
+	List <SerialKiller> findSerialKillerByConfirmedKills(int confirmedKills);
 	
 	List<SerialKiller> findSerialKillerByZodiacSign(String zodiacSign);
 }
