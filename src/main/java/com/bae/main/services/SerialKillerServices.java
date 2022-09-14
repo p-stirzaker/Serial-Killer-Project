@@ -5,56 +5,56 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.bae.main.entities.SerialKillerProject;
+import com.bae.main.entities.SerialKiller;
 import com.bae.main.exceptions.SerialKillerNotFoundException;
-import com.bae.main.repos.SerialKillerProjectRepo;
+import com.bae.main.repos.SerialKillerRepo;
 
 
 @Service
-public class SerialKillerProjectServices {
+public class SerialKillerServices {
 
-	private SerialKillerProjectRepo repo;
+	private SerialKillerRepo repo;
 	
-	public SerialKillerProjectServices(SerialKillerProjectRepo repo) {
+	public SerialKillerServices(SerialKillerRepo repo) {
 		super();
 		this.repo = repo;
 	}
 	
-	public SerialKillerProject create(SerialKillerProject input) {
+	public SerialKiller create(SerialKiller input) {
 		return repo.saveAndFlush(input);
 	}
 	
-	public List<SerialKillerProject> getAll(){
+	public List<SerialKiller> getAll(){
 		return repo.findAll();
 	}
 	
-	public SerialKillerProject getById(long id) {
+	public SerialKiller getById(long id) {
 		return repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
 	}
 	
 	
-	public List<SerialKillerProject> getByFirstName(@PathVariable String firstName) {
+	public List<SerialKiller> getByFirstName(@PathVariable String firstName) {
 		return repo.findSerialKillerByFirstName(firstName);
 	}
 	
-	public List<SerialKillerProject> getByLastName(@PathVariable String lastName) {
+	public List<SerialKiller> getByLastName(@PathVariable String lastName) {
 		return repo.findSerialKillerByLastName(lastName);
 	}
 	
-	public List<SerialKillerProject> getByPlace(@PathVariable String place) {
+	public List<SerialKiller> getByPlace(@PathVariable String place) {
 		return repo.findSerialKillerByPlace(place);
 	}
 	
-	public SerialKillerProject getByConfirmedKills(@PathVariable int confirmedKills) {
+	public SerialKiller getByConfirmedKills(@PathVariable int confirmedKills) {
 		return repo.findSerialKillerByConfirmedKills(confirmedKills);
 	}
 	
-	public List<SerialKillerProject> getByZodiacSign (@PathVariable String zodiacSign) {
+	public List<SerialKiller> getByZodiacSign (@PathVariable String zodiacSign) {
 		return repo.findSerialKillerByZodiacSign(zodiacSign);
 	}
 	
-	public SerialKillerProject update(long id, SerialKillerProject input) {
-		SerialKillerProject existing = repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
+	public SerialKiller update(long id, SerialKiller input) {
+		SerialKiller existing = repo.findById(id).orElseThrow(SerialKillerNotFoundException::new);
 		
 		existing.setFirstName(input.getFirstName());
 		existing.setLastName(input.getLastName());

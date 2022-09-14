@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 
 @Entity
-public class SerialKillerProject{
+public class SerialKiller{
 	@Id 
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
@@ -30,11 +30,11 @@ public class SerialKillerProject{
 	@Column(nullable = false)
 	private String zodiacSign;
 
-	public SerialKillerProject() {
+	public SerialKiller() {
 		super();
 	}
 	
-	public SerialKillerProject(String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+	public SerialKiller(String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -45,7 +45,7 @@ public class SerialKillerProject{
 	}
 
 	// Used for reading
-	public SerialKillerProject(long id, String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+	public SerialKiller(long id, String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -115,7 +115,7 @@ public class SerialKillerProject{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SerialKillerProject other = (SerialKillerProject) obj;
+		SerialKiller other = (SerialKiller) obj;
 		return id == other.id && Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName) && Objects.equals(place, other.place) && confirmedKills == other.confirmedKills && Objects.equals(zodiacSign, other.zodiacSign);
 	}
 }
