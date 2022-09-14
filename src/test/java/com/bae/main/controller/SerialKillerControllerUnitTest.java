@@ -61,6 +61,8 @@ public class SerialKillerControllerUnitTest {
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
 
 		String resultAsJSON = mapper.writeValueAsString(result);
+
+		Mockito.when(service.getAll()).thenReturn(result);
 		
 		mvc.perform(get("/SerialKiller/getAll")
 			.contentType(MediaType.APPLICATION_JSON))
@@ -73,6 +75,8 @@ public class SerialKillerControllerUnitTest {
 		SerialKiller result = new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius");
 
 		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		Mockito.when(service.getById(1L)).thenReturn(result);
 				
 		mvc.perform(get("/SerialKiller/getById/1")
 			.contentType(MediaType.APPLICATION_JSON))
@@ -89,6 +93,8 @@ public class SerialKillerControllerUnitTest {
 		SerialKiller response = new SerialKiller(1L,"Rose","West", "Gloucester", 10, "Sagittarius");
 		String responseAsJSON = mapper.writeValueAsString(response);	
 		
+		Mockito.when(service.update(1L, input)).thenReturn(response);
+		
 		mvc.perform(put("/SerialKiller/update/1")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(resultAsJSON))
@@ -103,6 +109,8 @@ public class SerialKillerControllerUnitTest {
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
 
 		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		Mockito.when(service.getByFirstName("Dennis")).thenReturn(result);
 		
 		mvc.perform(get("/SerialKiller/getByFirstName/Dennis")
 			.contentType(MediaType.APPLICATION_JSON))
@@ -119,6 +127,8 @@ public class SerialKillerControllerUnitTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
+		Mockito.when(service.getByLastName("Nilsen")).thenReturn(result);
+		
 		mvc.perform(get("/SerialKiller/getBylastName/Nilsen")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
@@ -133,6 +143,8 @@ public class SerialKillerControllerUnitTest {
 		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
 
 		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		Mockito.when(service.getByPlace("London")).thenReturn(result);
 		
 		mvc.perform(get("/SerialKiller/getBylastName/London")
 			.contentType(MediaType.APPLICATION_JSON))
@@ -149,6 +161,8 @@ public class SerialKillerControllerUnitTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
+		Mockito.when(service.getByConfirmedKills(12)).thenReturn(result);
+		
 		mvc.perform(get("/SerialKiller/getBylastName/12")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
@@ -164,6 +178,8 @@ public class SerialKillerControllerUnitTest {
 
 		String resultAsJSON = mapper.writeValueAsString(result);
 		
+		Mockito.when(service.getByZodiacSign("Sagittarius")).thenReturn(result);
+		
 		mvc.perform(get("/SerialKiller/getBylastName/Sagittarius")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
@@ -173,10 +189,21 @@ public class SerialKillerControllerUnitTest {
 	
 	@Test
 	public void deleteTest() throws Exception {	
+		Mockito.when(service.delete(1L)).thenReturn(true);
+		
 		mvc.perform(delete("/SerialKiller/delete/1")
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
 			.andExpect(content().string("true"));
 	}
 	
+	@Test
+	public void deleteFailTest() throws Exception {
+		Mockito.when(service.delete(1L)).thenReturn(false);
+		
+		mvc.perform(delete("/SerialKiller/delete/1")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())	
+				.andExpect(content().string("false"));
+	}
 }
