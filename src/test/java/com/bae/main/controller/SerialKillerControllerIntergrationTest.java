@@ -1,7 +1,9 @@
 package com.bae.main.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -71,5 +73,104 @@ public class SerialKillerControllerIntergrationTest {
 			.contentType(MediaType.APPLICATION_JSON))
 			.andExpect(status().isOk())	
 			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void updateTest() throws Exception {	
+		// An object for sending in the body of the request
+		SerialKiller input = new SerialKiller("Rose","West", "Gloucester", 10, "Sagittarius");
+		String resultAsJSON = mapper.writeValueAsString(input);
+		// An object for checking the response
+		SerialKiller response = new SerialKiller(1L,"Rose","West", "Gloucester", 10, "Sagittarius");
+		String responseAsJSON = mapper.writeValueAsString(response);	
+		
+		mvc.perform(put("/SerialKiller/update/1")
+			.contentType(MediaType.APPLICATION_JSON)
+			.content(resultAsJSON))
+			.andExpect(status().isAccepted())	
+			.andExpect(content().json(responseAsJSON));
+	}
+	
+	@Test
+	public void getByFirstNameTest() throws Exception {	
+		//Added my expected customer to the list
+		List<SerialKiller> result = new ArrayList<>();
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+		//Converted that list into JSON
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getByFirstName/Dennis")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getBylastNameTest() throws Exception {	
+		//Created a list
+		List<SerialKiller> result = new ArrayList<>();
+		//Added my expected customer to the list
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+		//Converted that list into JSON
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/Nilsen")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByPlace() throws Exception {	
+		//Created a list
+		List<SerialKiller> result = new ArrayList<>();
+		//Added my expected customer to the list
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+		//Converted that list into JSON
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/London")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByConfirmedKills() throws Exception {	
+		//Created a list
+		List<SerialKiller> result = new ArrayList<>();
+		//Added my expected customer to the list
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+		//Converted that list into JSON
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/12")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	@Test
+	public void getByZodicSign() throws Exception {	
+		//Created a list
+		List<SerialKiller> result = new ArrayList<>();
+		//Added my expected customer to the list
+		result.add(new SerialKiller(1L, "Dennis", "Nilsen", "London", 12, "Sagittarius"));
+		//Converted that list into JSON
+		String resultAsJSON = mapper.writeValueAsString(result);
+		
+		mvc.perform(get("/SerialKiller/getBylastName/Sagittarius")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().json(resultAsJSON));
+	}
+	
+	
+	@Test
+	public void deleteTest() throws Exception {	
+		mvc.perform(delete("/SerialKiller/delete/1")
+			.contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isOk())	
+			.andExpect(content().string("true"));
 	}
 }
