@@ -8,10 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-public class SerialKillerProject {
 
 @Entity
-public class SerialKiller{
+public class SerialKillerProject{
 	@Id 
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id;
@@ -31,11 +30,11 @@ public class SerialKiller{
 	@Column(nullable = false)
 	private String zodiacSign;
 
-	public SerialKiller() {
+	public SerialKillerProject() {
 		super();
 	}
 	
-	public SerialKiller(String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+	public SerialKillerProject(String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -46,7 +45,7 @@ public class SerialKiller{
 	}
 
 	// Used for reading
-	public SerialKiller(long id, String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
+	public SerialKillerProject(long id, String firstName, String lastName, String place, int confirmedKills, String zodiacSign) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -116,8 +115,7 @@ public class SerialKiller{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SerialKiller other = (SerialKiller) obj;
+		SerialKillerProject other = (SerialKillerProject) obj;
 		return id == other.id && Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName) && Objects.equals(place, other.place) && confirmedKills == other.confirmedKills && Objects.equals(zodiacSign, other.zodiacSign);
 	}
-}
 }
