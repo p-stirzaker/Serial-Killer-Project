@@ -32,7 +32,7 @@ let createManyCards = (serialKillers) => {
             </p>
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${serialKiller.id}" onclick="showUpdateModal()">Update</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${serialKiller.id}" onclick="showUpdateModal(this)">Update</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${serialKiller.id}" onclick="del(this)">Delete</button>
                 </div>
 
@@ -81,15 +81,29 @@ let create = () => {
 
 let update = () => {
 
-    let obj = {
-        "firstName":"",
-        "lastName":"",
-        "place":"",
-        "confirmedKills": 0,
-        "zodiacSign":""
-    }
+    let idElement = document.getElementById("update-modal-id")
+    let firstNameElement = document.getElementById("update-modal-firstName")
+    let lastNameElement = document.getElementById("update-modal-lastName")
+    let placeElement = document.getElementById("update-modal-place")
+    let confirmedKillsElement = document.getElementById("update-modal-confirmedKills")
+    let zodiacSignElement = document.getElementById("update-modal-zodiacSign")
 
-    axios.put("http://localhost:8082/SerialKiller/update", obj)
+    let obj = {
+        "firstName":firstNameElement.value,
+        "lastName":lastNameElement.value,
+        "place":placeElement.value,
+        "confirmedKills":confirmedKillsElement.value,
+        "zodiacSign":zodiacSignElement.value
+    }
+    let id = idElement.value
+    idElement.value=""
+    firstNameElement.value=""
+    lastNameElement.value=""
+    placeElement.value=""
+    confirmedKillsElement.value=0
+    zodiacSignElement.value=""
+
+    axios.put(`http://localhost:8082/SerialKiller/update/${id}`, obj)
     .then(res => {
         console.log(res.data);
         getAll();
@@ -129,9 +143,10 @@ let selectUpdate = () => {
     console.log(text)
     document.getElementById("search-input").placeholder = text
 }
-let showUpdateModal= () => {
+let showUpdateModal= (elem) => {
     const updateModal = new bootstrap.Modal(document.getElementById('updateModal'))
     updateModal.show()
-
+    console.log(updateModal);
+    document.getElementById("update-modal-id").value=elem.dataset.id
     
 }
