@@ -59,16 +59,56 @@
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="First name">
-                        <input type="text" class="form-control" placeholder="Last name">
-                        <input type="text" class="form-control" placeholder="Place">
-                        <input type="text" class="form-control" placeholder="Confirmed kills">
-                        <input type="text" class="form-control" placeholder="Zodiac sign">
-                      </div>
+                        <input type="text" class="form-control" placeholder="First name" id="create-modal-firstName">
+                    </div>
+                    <div class="input-group mb-3">    
+                        <input type="text" class="form-control" placeholder="Last name" id="create-modal-lastName">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Place"id="create-modal-place">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Confirmed kills"id="create-modal-confirmedKills">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Zodiac sign"id="create-modal-zodiacSign">
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-primary">Submit</button>
+                  <button type="button" class="btn btn-primary" onclick="create()">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Serial Killer Information</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="First name" id="update-modal-firstName">
+                    </div>
+                    <div class="input-group mb-3">    
+                        <input type="text" class="form-control" placeholder="Last name" id="update-modal-lastName">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Place"id="update-modal-place">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Confirmed kills"id="update-modal-confirmedKills">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Zodiac sign"id="update-modal-zodiacSign">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-primary" onclick="update()">Submit</button>
                 </div>
               </div>
             </div>

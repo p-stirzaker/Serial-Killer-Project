@@ -53,16 +53,26 @@ let getAll = () => {
 }
 
 let create = () => {
+    let firstNameElement = document.getElementById("create-modal-firstName")
+    let lastNameElement = document.getElementById("create-modal-lastName")
+    let placeElement = document.getElementById("create-modal-place")
+    let confirmedKillsElement = document.getElementById("create-modal-confirmedKills")
+    let zodiacSignElement = document.getElementById("create-modal-zodiacSign")
 
     let obj = {
-        "firstName":"",
-        "lastName":"",
-        "place":"",
-        "confirmedKills": 0,
-        "zodiacSign":""
+        "firstName":firstNameElement.value,
+        "lastName":lastNameElement.value,
+        "place":placeElement.value,
+        "confirmedKills":confirmedKillsElement.value,
+        "zodiacSign":zodiacSignElement.value
     }
+    firstNameElement.value=""
+    lastNameElement.value=""
+    placeElement.value=""
+    confirmedKillsElement.value=0
+    zodiacSignElement.value=""
 
-    axios.post("http://localhost:8082/SerialKiller/create,", obj)
+    axios.post("http://localhost:8082/SerialKiller/create", obj)
     .then(res => {
         console.log(res.data);
         getAll();
