@@ -8,8 +8,7 @@ let createManyCards = (serialKillers) => {
         div.classList.add("col")
         div.innerHTML = `
             <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-
+            <img class="card-img-top" width="100%" height="225" src="./imgs/${serialKiller.firstName}_${serialKiller.lastName}.png"onerror="this.src='./imgs/not_found.jpg'">
             <div class="card-body">
                 <p class="card-text">
                 <ul>
