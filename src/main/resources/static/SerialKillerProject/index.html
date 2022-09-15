@@ -4,12 +4,12 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-
+        <title>Serial Killers</title>
+        <link rel="icon" type="image/x-icon" href="./imgs/Favicon.jpg">
         <!-- CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
         <link rel="stylesheet" href="./css/style.css"/>
+        
     </head>
 
     <body onload ="getAll()">
@@ -17,172 +17,31 @@
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                 <h1 style="font-family:cursive;color:red;font-size:xx-large";>British Serial Killers</h1>
             </header>
+            
           </div>
-        <p>Welcome</p>
+        <h2>Welcome!</h2>
         <p>
             This page allows you to view a British serial killer database where you can search by name, place, confirmed kills and zodiac signs of different serial killers! If you can't find one that matches your search you can even add your own!
         </p>
 
-
-          <select class="form-select">
-            <option selected>Search by</option>
-            <option value="ID">ID</option>
-            <option value="firstName">First name</option>
-            <option value="lastName">Last name</option>
-            <option value="place">Place</option>
-            <option value="confirmedKills">Confirmed kills</option>
-            <option value="zodiacSign">Zodiac sign</option>
-          </select>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Serial Killer" aria-label="Username" aria-describedby="basic-addon1">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+            <select id="search-select" class="form-select" onchange="selectUpdate()">
+                <option selected>Search by</option>
+                <option data-help="Add an ID e.g 4" value="getById">ID</option>
+                <option data-help="Add a first name e.g John" value="getByFirstName">First name</option>
+                <option data-help="Add a last name e.g Doe" value="getBylastName">Last name</option>
+                <option data-help="Add a place e.g London" value="getByPlace">Place</option>
+                <option data-help="Add an amount of confirmed kills e.g 3" value="getByConfirmedKills">Confirmed kills</option>
+                <option data-help="Add a zodiac sign  e.g Virgo" value="getByZodiacSign">Zodiac sign</option>
+              </select>
+            <input id="search-input" type="text" class="form-control" placeholder="Serial Killer">
+            <button onclick="search()" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
           </div>
 
         <div class="album py-5 bg-light">
             <div class="container">
         
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-4 g-3">
-                <div class="col">
-                  <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-        
-                    <div class="card-body">
-                      <p class="card-text">
-                        <ul>
-                            <li>
-                                First name: XX
-                            </li>
-                            <li>
-                                Last name: XX
-                            </li>
-                            <li>
-                                Place: XX
-                            </li>
-                            <li>
-                                Confirmed kills: 00
-                            </li>
-                            <li>
-                                Zodiac sign: XX
-                            </li>
-                        </ul>      
-                    </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-        
-                    <div class="card-body">
-                      <p class="card-text">    <ul>
-                        <li>
-                            First name: XX
-                        </li>
-                        <li>
-                            Last name: XX
-                        </li>
-                        <li>
-                            Place: XX
-                        </li>
-                        <li>
-                            Confirmed kills: 00
-                        </li>
-                        <li>
-                            Zodiac sign: XX
-                        </li>
-                    </ul> </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                        </div>
-                
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-        
-                    <div class="card-body">
-                      <p class="card-text">    <ul>
-                        <li>
-                            First name: XX
-                        </li>
-                        <li>
-                            Last name: XX
-                        </li>
-                        <li>
-                            Place: XX
-                        </li>
-                        <li>
-                            Confirmed kills: 00
-                        </li>
-                        <li>
-                            Zodiac sign: XX
-                        </li>
-                    </ul> </p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                        </div>
-                      
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                      <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-          
-                      <div class="card-body">
-                        <p class="card-text">    <ul>
-                            <li>
-                                First name: XX
-                            </li>
-                            <li>
-                                Last name: XX
-                            </li>
-                            <li>
-                                Place: XX
-                            </li>
-                            <li>
-                                Confirmed kills: 00
-                            </li>
-                            <li>
-                                Zodiac sign: XX
-                            </li>
-                        </ul> </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-                          </div>
-                        
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-          
-                  
-                
-               
-               
-        
-               
-               
-
-
-                </div>
+              <div id="cards" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-md-4 g-3">
               </div>
             </div>
           </div>
