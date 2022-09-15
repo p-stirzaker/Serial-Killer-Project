@@ -32,7 +32,7 @@ let createManyCards = (serialKillers) => {
             </p>
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Update</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${serialKiller.id}" onclick="showUpdateModal()">Update</button>
                     <button type="button" class="btn btn-sm btn-outline-secondary" data-id="${serialKiller.id}" onclick="del(this)">Delete</button>
                 </div>
 
@@ -129,4 +129,9 @@ let selectUpdate = () => {
     console.log(text)
     document.getElementById("search-input").placeholder = text
 }
+let showUpdateModal= () => {
+    const updateModal = new bootstrap.Modal(document.getElementById('updateModal'))
+    updateModal.show()
 
+    
+}
