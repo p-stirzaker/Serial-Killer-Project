@@ -140,7 +140,7 @@ Here I will add some examples:
 ![getbylastnamepostman](https://github.com/p-stirzaker/Serial-Killer-Project/blob/dev/Documentation/Postman-getByLasyName.png)
  
  **Update**:
-![updatepostman]( https://github.com/p-stirzaker/Serial-Killer-Project/blob/dev/Documentation/Postman-update.png)
+![updatepostman](https://github.com/p-stirzaker/Serial-Killer-Project/blob/dev/Documentation/Postman-update.png)
 
 **Delete**:
 ![deletepostman](https://github.com/p-stirzaker/Serial-Killer-Project/blob/dev/Documentation/Postman-delete-part1.png)
